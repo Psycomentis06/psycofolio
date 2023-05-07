@@ -1,7 +1,7 @@
 <script>
-  import Counter from "./Counter.svelte";
-  import welcome from "$lib/images/svelte-welcome.webp";
-  import welcome_fallback from "$lib/images/svelte-welcome.png";
+  import ProfilePic from "$lib/assets/images/avatar.png";
+  import SocialMediaLink from "$lib/components/SocialMediaLink.svelte";
+  import { SocialMediaNames } from "$lib/services/social_media";
 </script>
 
 <svelte:head>
@@ -11,3 +11,18 @@
     content="Psycofolio (Psycomentis Portfolio) is a web resume application made with SvelteKit."
   />
 </svelte:head>
+
+<div class="w-full h-[250px] bg-black relative flex items-center justify-center">
+    <h1 class="text-white text-5xl text-center font-thin font-fuggles">Amor Ali</h1>
+    <div>
+      <img class="w-36 h-36 rounded-full absolute -bottom-14 left-1/2 transform -translate-x-1/2" src={ProfilePic} alt="Luffy from one piece">
+    </div>
+</div>
+<div class="socials flex items-center justify-center mt-24">
+  <div class="links lg:w-1/2 flex items-center justify-around">
+    <SocialMediaLink socialMediaName={SocialMediaNames.GITHUB} username="amorali" />
+    <SocialMediaLink socialMediaName={SocialMediaNames.LINKEDIN} username="amorali" />
+    <SocialMediaLink socialMediaName={SocialMediaNames.TWITTER} username="amorali" />
+    <SocialMediaLink socialMediaName={SocialMediaNames.INSTAGRAM} username="amorali" />
+  </div>
+</div>
