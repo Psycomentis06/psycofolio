@@ -1,0 +1,54 @@
+{
+    "themes": {
+        "default": "night",
+        "available": [
+            {
+                "code": "night",
+                "name": "Nigh"
+            },
+            {
+                "code": "acid",
+                "name": "Acid"
+            },
+            {
+                "code": "synthwave",
+                "name": "Synthwave"
+            },
+            {
+                "code": "forest",
+                "name": "Forest"
+            },
+            {
+                "code": "business",
+                "name": "Business"
+            },
+            {
+                "code": "emerald",
+                "name": "Emerald"
+            }
+        ]
+    },
+    "language": {
+        "default": "en",
+        "available": [
+            {
+                "code": "en",
+                "name": "English",
+                "flag": "https://flagicons.lipis.dev/flags/4x3/gb.svg",
+                "rtl": false
+            },
+            {
+                "code": "fr",
+                "name": "Français",
+                "flag": "https://flagicons.lipis.dev/flags/4x3/fr.svg",
+                "rtl": false
+            },
+            {
+                "code": "ar",
+                "name": "العربية",
+                "flag": "https://flagicons.lipis.dev/flags/4x3/tn.svg",
+                "rtl": true
+            }
+        ]
+    }
+}
