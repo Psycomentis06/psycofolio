@@ -1,14 +1,8 @@
 <script>
-  import MoonIcon from "./icons/Moon.svelte";
-  import SunIcon from "./icons/Sun.svelte";
-  import FacebookLogo from "../assets/icons/facebook.svg";
-  import LanguageIcon from "./icons/Language.svelte";
-  import SettingsIcon from "./icons/Settings.svelte";
-  import PaintIcon from "./icons/Paint.svelte";
-  import LoginIcon from "./icons/Login.svelte";
-  import Language from "./icons/Language.svelte";
   import ThemeSelectButton from "./ThemeSelectButton.svelte";
   import LanguageSelectButton from "./LanguageSelectButton.svelte";
+  import Settings from "../components/Settings.svelte";
+  import Login from "../components/Login.svelte";
 </script>
 
 <nav class="navbar bg-base-100">
@@ -37,10 +31,14 @@
         <LanguageSelectButton />
       </li>
       <li>
-        <button class="btn btn-circle btn-ghost">
-          <SettingsIcon />
-        </button>
+        <Login />
       </li>
+      <!-- 
+        Show for admin
+      <li>
+        <Settings />
+      </li>
+      -->
      </ul>
   </div>
 </nav>
