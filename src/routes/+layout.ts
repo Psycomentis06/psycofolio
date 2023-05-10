@@ -1,13 +1,12 @@
 
-export async function load({route}) {
+export async function load({route, params}) {
     
-    if (/^\/admin/.test(route.id || '')) {
+    console.log(route.id);
+    
+    if (/\/\[lang]\/admin/.test(route.id || '')) {
         console.log("admin layout");
     }
     return {
-        posts: {
-            title: 'Posts',
-            href: '/posts',
-        }
+        lang: params?.lang,
     };
 }
