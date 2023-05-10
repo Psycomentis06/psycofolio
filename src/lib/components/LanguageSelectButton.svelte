@@ -1,5 +1,13 @@
 <script lang="ts">
+    import { onMount } from "svelte";
+    import { getAvailableLanguages, getActiveLanguage } from '../services/language'
     import LanguageIcon from "./icons/Language.svelte";
+
+    let languages = getAvailableLanguages();
+    let activeLanguage: string
+    onMount(() => {
+      activeLanguage = getActiveLanguage();
+    });
 </script>
 <div title="Change Language" class="dropdown dropdown-end">
   <button class="btn btn-ghost btn-circle">
@@ -9,116 +17,19 @@
     class="dropdown-content bg-base-200 text-base-content rounded-t-box rounded-b-box top-px mt-16 w-56 overflow-y-auto shadow-2xl"
   >
     <ul class="menu menu-compact gap-1 p-3">
+        {#each languages as lang}
       <li>
-        <button class="flex active"
+        <button class="{activeLanguage === lang.code ? 'active' : ''} flex rounded-box p-2 w-full text-left"
           ><img
             loading="lazy"
             width="20"
             height="20"
-            alt="English"
-            src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.0/svg/1f1ec-1f1e7.svg"
-          /> <span class="flex flex-1 justify-between">English </span></button
+            alt={lang.name}
+            src={lang.flag}
+          /> <span class="flex flex-1 justify-between">{lang.name}</span></button
         >
       </li>
-      <li>
-        <button class="flex"
-          ><img
-            loading="lazy"
-            width="20"
-            height="20"
-            alt="Español"
-            src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.0/svg/1f1ea-1f1f8.svg"
-          /> <span class="flex flex-1 justify-between">Español </span></button
-        >
-      </li>
-      <li>
-        <button class="flex"
-          ><img
-            loading="lazy"
-            width="20"
-            height="20"
-            alt="Français"
-            src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.0/svg/1f1eb-1f1f7.svg"
-          /> <span class="flex flex-1 justify-between">Français </span></button
-        >
-      </li>
-      <li>
-        <button class="flex"
-          ><img
-            loading="lazy"
-            width="20"
-            height="20"
-            alt="Indonesia"
-            src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.0/svg/1f1ee-1f1e9.svg"
-          /> <span class="flex flex-1 justify-between">Indonesia </span></button
-        >
-      </li>
-      <li>
-        <button class="flex"
-          ><img
-            loading="lazy"
-            width="20"
-            height="20"
-            alt="日本語"
-            src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.0/svg/1f1ef-1f1f5.svg"
-          /> <span class="flex flex-1 justify-between">日本語 </span></button
-        >
-      </li>
-      <li>
-        <button class="flex"
-          ><img
-            loading="lazy"
-            width="20"
-            height="20"
-            alt="한국어"
-            src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.0/svg/1f1f0-1f1f7.svg"
-          /> <span class="flex flex-1 justify-between">한국어 </span></button
-        >
-      </li>
-      <li>
-        <button class="flex"
-          ><img
-            loading="lazy"
-            width="20"
-            height="20"
-            alt="Português"
-            src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.0/svg/1f1f5-1f1f9.svg"
-          /> <span class="flex flex-1 justify-between">Português </span></button
-        >
-      </li>
-      <li>
-        <button class="flex"
-          ><img
-            loading="lazy"
-            width="20"
-            height="20"
-            alt="Русский"
-            src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.0/svg/1f1f7-1f1fa.svg"
-          /> <span class="flex flex-1 justify-between">Русский </span></button
-        >
-      </li>
-      <li>
-        <button class="flex"
-          ><img
-            loading="lazy"
-            width="20"
-            height="20"
-            alt="中文"
-            src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.0/svg/1f1e8-1f1f3.svg"
-          /> <span class="flex flex-1 justify-between">中文 </span></button
-        >
-      </li>
-      <li>
-        <button class="flex"
-          ><img
-            loading="lazy"
-            width="20"
-            height="20"
-            alt="繁體中文"
-            src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.0/svg/1f1f9-1f1fc.svg"
-          /> <span class="flex flex-1 justify-between">繁體中文 </span></button
-        >
-      </li>
+      {/each}
     </ul>
   </div>
 </div>
