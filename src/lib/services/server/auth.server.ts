@@ -1,13 +1,12 @@
 import { APP_AUTH_USERNAME, APP_AUTH_PASSWORD } from '$env/static/private'
-import { createLoginSessionFile, deleteLoginSessionFile, loginSessionFileExists } from './fs'
+import { createLoginSessionFile, deleteLoginSessionFile, loginSessionFileExists } from './fs.server'
 
 export function login(username: string, password: string) {
     const loginState = username === APP_AUTH_USERNAME && password === APP_AUTH_PASSWORD
     if (loginState) {
-        createLoginSessionFile()
-        return true
+        return createLoginSessionFile()
     }
-    return false
+    return null
 }
 
 export function logout(sessionId: string) {
