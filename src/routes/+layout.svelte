@@ -12,6 +12,10 @@
   export let data: LayoutData;
   const themeStore = writable();
   setContext("theme", themeStore);
+  // Set translation
+  const translationStore = writable(data.translation);
+  setContext("translation", translationStore);
+  
   onMount(() => {
     
     // Set theme
@@ -32,6 +36,7 @@
         goto(`/${getActiveLanguage()}/${pathname}`, { replaceState: true });
       }
     }
+
   });
 
 </script>
