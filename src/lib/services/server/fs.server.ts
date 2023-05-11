@@ -6,17 +6,22 @@ export function initialize() {
     existsSync(APP_DATA_DIR) || mkdirSync(APP_DATA_DIR)
 }
 
-export function createLoginSessionFile() {
+export function createLoginSessionFile(): string | null {
+    initialize()
     const data = {
+        expiration: Date.now() + 1000 * 60 * 60 * 24 * 7
     }
     const sessionId = randomUUID()
     const sessionFile = `${APP_DATA_DIR}/${sessionId}`
+    console.log(process.cwd());
+    
     writeFile(sessionFile, JSON.stringify(data), (err) => {
         if (err) {
             console.error(err)
+            return null
         }
     })
-
+    return sessionId
 }
 
 export function deleteLoginSessionFile(sessionId: string) {
