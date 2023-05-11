@@ -17,7 +17,7 @@
         locale[1] = lang
         const localePath = locale.join('/')
         activeLanguage = lang
-        goto(localePath, { replaceState: true })
+        window.location.href = localePath
       }) 
     }
 </script>
