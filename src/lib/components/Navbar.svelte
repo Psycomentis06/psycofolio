@@ -1,8 +1,8 @@
 <script>
   import ThemeSelectButton from "./ThemeSelectButton.svelte";
   import LanguageSelectButton from "./LanguageSelectButton.svelte";
-  import Settings from "../components/Settings.svelte";
   import Login from "../components/Login.svelte";
+
 </script>
 
 <nav class="navbar bg-base-100">
