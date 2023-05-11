@@ -1,0 +1,9 @@
+{
+    "navbar.login.title": "Connecter (l'admin seulement)",
+    "navbar.login.form.input.username.label": "Username",
+    "navbar.login.form.input.username.placeholder": "Username",
+    "navbar.login.form.input.password.label": "Mot de passe",
+    "navbar.login.form.input.password.placeholder": "Mot de passe",
+    "navbar.login.form.button.submit": "Connecter",
+    "navbar.profile.title": "Profile"
+}

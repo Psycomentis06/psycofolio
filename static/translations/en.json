@@ -1,0 +1,9 @@
+{
+    "navbar.login.title": "Login (only for admin)",
+    "navbar.login.form.input.username.label": "Username",
+    "navbar.login.form.input.username.placeholder": "Username",
+    "navbar.login.form.input.password.label": "Password",
+    "navbar.login.form.input.password.placeholder": "Password",
+    "navbar.login.form.button.submit": "Login",
+    "navbar.profile.title": "Profile"
+}
