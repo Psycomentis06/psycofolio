@@ -31,10 +31,10 @@
         }),
       });
       const loginResponse = await loginFetch.json();
-      console.log(loginResponse);
+      console.log('Login response: ', loginResponse);
       
     } catch (e) {
-      console.log(e);
+      console.log('Login Error', e);
     }
     loginApiLoading = false;
   };

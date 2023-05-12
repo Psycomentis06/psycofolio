@@ -1,4 +1,4 @@
-import { mkdirSync, existsSync, writeFile, readFile, unlink } from 'fs'
+import { mkdirSync, existsSync, writeFile, readFileSync, unlink } from 'fs'
 import { randomUUID } from 'crypto'
 import { APP_DATA_DIR } from '$env/static/private'
 
@@ -8,13 +8,14 @@ export function initialize() {
 
 export function createLoginSessionFile(): string | null {
     initialize()
+    let date = new Date()
+    date.setMinutes(date.getMinutes() + 30)
+
     const data = {
-        expiration: Date.now() + 1000 * 60 * 60 * 24 * 7
+        expiration: date.getTime()
     }
     const sessionId = randomUUID()
     const sessionFile = `${APP_DATA_DIR}/${sessionId}`
-    console.log(process.cwd());
-    
     writeFile(sessionFile, JSON.stringify(data), (err) => {
         if (err) {
             console.error(err)
@@ -41,10 +42,16 @@ export function loginSessionFileExists(sessionId: string) {
 
 export function getLoginSessionFile(sessionId: string) {
     const sessionFile = `${APP_DATA_DIR}/${sessionId}`
-    return readFile(sessionFile, (err, data) => {
+    
+    return readFileSync(sessionFile, 'utf-8')
+    
+}
+
+export function updateLoginSessionFile(sessionId: string, data: any) {
+    const sessionFile = `${APP_DATA_DIR}/${sessionId}`
+    return writeFile(sessionFile, JSON.stringify(data), (err) => {
         if (err) {
-            console.error(err)
+            console.error('Update file: ', err)
         }
-        return data
     })
 }
