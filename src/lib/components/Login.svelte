@@ -4,6 +4,7 @@
   import EyeSlashIcon from "./icons/EyeSlash.svelte";
   import EyeIcon from "./icons/Eye.svelte";
   import LoginIcon from "./icons/Login.svelte";
+  import type { Writable } from "svelte/store";
 
   let passwordVisible = false;
   let username = "";
@@ -18,6 +19,8 @@
   /*translationStore.subscribe((value) => {
         console.log(value);
     })*/
+  
+  const loggedIn = getContext<Writable<boolean>>("logged");
 
   const login = async () => {
     loginApiLoading = true;
@@ -31,7 +34,9 @@
         }),
       });
       const loginResponse = await loginFetch.json();
-      console.log('Login response: ', loginResponse);
+      if (loginResponse?.sessionId) {
+        loggedIn.set(true);
+      }
       
     } catch (e) {
       console.log('Login Error', e);

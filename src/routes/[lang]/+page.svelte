@@ -1,7 +1,9 @@
 <script>
   import ProfilePic from "$lib/assets/images/avatar.png";
+  import HomeUsernameTitle from "$lib/components/HomeUsernameTitle.svelte";
   import SocialMediaLink from "$lib/components/SocialMediaLink.svelte";
   import { SocialMediaNames } from "$lib/services/social_media";
+
 </script>
 
 <svelte:head>
@@ -13,7 +15,7 @@
 </svelte:head>
 
 <div class="w-full h-[250px] bg-black relative flex items-center justify-center">
-    <h1 class="text-white text-5xl text-center font-thin font-fuggles">Amor Ali</h1>
+    <HomeUsernameTitle />
     <div>
       <img class="w-36 h-36 rounded-full absolute -bottom-14 left-1/2 transform -translate-x-1/2" src={ProfilePic} alt="Luffy from one piece">
     </div>

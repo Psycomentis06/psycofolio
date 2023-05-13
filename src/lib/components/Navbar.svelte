@@ -1,19 +1,21 @@
 <script>
   import ThemeSelectButton from "./ThemeSelectButton.svelte";
   import LanguageSelectButton from "./LanguageSelectButton.svelte";
+  import AdminNavDropdown from "./AdminNavDropdown.svelte";
   import Login from "../components/Login.svelte";
+  import { getContext } from "svelte";
 
+  const isLogged = getContext("logged");
 </script>
 
 <nav class="navbar bg-base-100">
   <div class="navbar-start" />
   <div class="navbar-center">
     <div class="dropdown">
-      <button class="btn capitalize btn-wide text-lg">
-        Profile
-      </button>
+      <button class="btn capitalize btn-wide text-lg"> Profile </button>
       <ul
-        class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-56">
+        class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-56"
+      >
         <li><button>Complete</button></li>
         <li><button>Web Dev</button></li>
         <li><button>Dev Ops</button></li>
@@ -23,22 +25,22 @@
     </div>
   </div>
   <div class="navbar-end">
-    <ul class="flex justify-around w-[150px]">
+    <ul class="flex justify-around w-[150px] items-center">
       <li>
-        <ThemeSelectButton />   
+        <ThemeSelectButton />
       </li>
       <li>
         <LanguageSelectButton />
       </li>
-      <li>
-        <Login />
-      </li>
-      <!-- 
-        Show for admin
-      <li>
-        <Settings />
-      </li>
-      -->
-     </ul>
+      {#if $isLogged}
+        <li>
+          <AdminNavDropdown />
+        </li>
+      {:else}
+        <li>
+          <Login />
+        </li>
+      {/if}
+    </ul>
   </div>
 </nav>

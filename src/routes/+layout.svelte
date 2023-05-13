@@ -15,6 +15,8 @@
   // Set translation
   const translationStore = writable(data.translation);
   setContext("translation", translationStore);
+
+  setContext('logged', writable(data.logged))
   
   onMount(() => {
     
