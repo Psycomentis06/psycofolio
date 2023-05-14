@@ -4,13 +4,14 @@
   import CheckIcon from '$lib/components/icons/Check.svelte'
   import CloseIcon from '$lib/components/icons/Close.svelte'
   import { fade } from "svelte/transition";
+  import type { Writable } from "svelte/store";
 
-    const isLogged = getContext("logged");
+    const isLogged = getContext<Writable<boolean>>("logged");
     
     let editMode = false
   </script>
 
-  {#if !isLogged}
+  {#if !$isLogged}
     <h1 class="text-white text-5xl text-center font-thin font-fuggles">Amor Ali</h1>
   {:else if !editMode}
     <div class="relative group/edit" in:fade>
