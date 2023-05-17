@@ -7,6 +7,7 @@ export default {
         otomanopee: ["Otomanopee One", "sans-serif"],
         fuggles: ["Fuggles", "cursive"],
         opensans: ["Open Sans Condensed", "sans-serif"],
+        firasan: ["Fira Sans", "sans-serif"],
       },
     },
   },
