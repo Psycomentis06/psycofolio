@@ -7,7 +7,7 @@
   import PlusIcon from "$lib/components/icons/Plus.svelte"
   import type { IProfile } from "$lib/models/profile";
   import type { SocialMediaNames } from "$lib/services/social_media";
-  import { getContext } from "svelte";
+  import { getContext, onMount } from "svelte";
   import type { PageData } from "./$types";
   import type { Writable } from "svelte/store";
 
@@ -63,6 +63,13 @@
       }
     })
   }
+
+  onMount(() => {
+    document.addEventListener('languagechange', (lang) => {
+      const { detail } = lang as CustomEvent
+      console.log(detail);
+    })
+  })
 </script>
 
 <svelte:head>
@@ -110,6 +117,9 @@
     </div>
   {/if}
 
+
+ 
+
   <!-- Add social modal -->
   <input bind:checked={socialMediaAddModalState}  type="checkbox" id="social-media-add-modal" class="modal-toggle" />
 <div class="modal">
@@ -137,3 +147,7 @@
   </div>
 </div>
 </div>
+
+ <p class="description">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet quas nesciunt vero architecto consequuntur beatae illo, fuga animi distinctio totam culpa corrupti ipsam harum unde, eligendi inventore? Harum, expedita ab.
+  </p>

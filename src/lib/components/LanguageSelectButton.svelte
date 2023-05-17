@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { getContext, onMount } from "svelte";
+    import { getContext, onMount, createEventDispatcher } from "svelte";
     import { getAvailableLanguages, getActiveLanguage, setLanguage } from '../services/language'
     import LanguageIcon from "./icons/Language.svelte";
     import { page } from '$app/stores'
@@ -30,7 +30,9 @@
           .then((data) => {
             translationStore.set(data)
           })
-      }) 
+      const ce = new CustomEvent('languagechange', { detail: lang })
+      document.dispatchEvent(ce)
+      })
     }
 </script>
 <div title="Change Language" class="dropdown dropdown-end">
