@@ -1,8 +1,14 @@
+import type { ISocialMedia } from "./socialmedia";
+
 export interface IProfile {
-    id: number;
-    name: string;
-    email: string;
-    phone: string;
+    firstName?: string;
+    lastName?: string;
+    email?: string;
+    phone?: string;
+    birthDate?: Date;
+    address?: string;
+    city?: string;
+    socialMedias?: ISocialMedia[];
 }
 
 export class Profile {
@@ -10,10 +16,5 @@ export class Profile {
 }
 
 export function createProfile(data: IProfile): Profile {
-    return {
-        id: data.id,
-        name: data.name,
-        email: data.email,
-        phone: data.phone
-    };
+    return new Profile();
 }

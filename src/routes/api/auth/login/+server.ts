@@ -1,7 +1,7 @@
 import { json } from '@sveltejs/kit'
 import { login } from '$lib/services/server/auth.server'
 
-export function GET({cookies}) {
+export function GET({}) {
     return json({message: 'Login: use POST method'})
 }
 
