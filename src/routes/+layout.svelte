@@ -17,6 +17,9 @@
   setContext("translation", translationStore);
 
   setContext('logged', writable(data.logged))
+
+  const languageStore = writable();
+  setContext("language", languageStore);
   
   onMount(() => {
     
@@ -38,7 +41,7 @@
         goto(`/${getActiveLanguage()}/${pathname}`, { replaceState: true });
       }
     }
-
+    languageStore.set(getActiveLanguage());
   });
 
 </script>

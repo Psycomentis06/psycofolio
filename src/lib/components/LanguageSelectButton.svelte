@@ -1,11 +1,14 @@
 <script lang="ts">
-    import { onMount } from "svelte";
+    import { getContext, onMount } from "svelte";
     import { getAvailableLanguages, getActiveLanguage, setLanguage } from '../services/language'
     import LanguageIcon from "./icons/Language.svelte";
     import { page } from '$app/stores'
-  import { goto } from "$app/navigation";
+    import { goto } from "$app/navigation";
+  import type { Writable } from "svelte/store";
 
     let languages = getAvailableLanguages();
+    const languageStore = getContext<Writable<string>>('language')
+    const translationStore = getContext<Writable<any>>('translation')
     let activeLanguage: string
     onMount(() => {
       activeLanguage = getActiveLanguage();
@@ -17,7 +20,16 @@
         locale[1] = lang
         const localePath = locale.join('/')
         activeLanguage = lang
-        window.location.href = localePath
+        languageStore.set(lang)
+        //window.location.href = localePath
+        goto(localePath, { replaceState: true })
+
+        // Update translation
+        fetch('/translations/' + lang + '.json')
+          .then((response) => response.json())
+          .then((data) => {
+            translationStore.set(data)
+          })
       }) 
     }
 </script>
@@ -31,7 +43,7 @@
     <ul class="menu menu-compact gap-1 p-3">
         {#each languages as lang}
       <li>
-        <button on:click={() => changeLanguage(lang.code)} class="{activeLanguage === lang.code ? 'active' : ''} flex rounded-box p-2 w-full text-left"
+        <button on:click={() => changeLanguage(lang.code)} class="{$languageStore === lang.code ? 'active' : ''} flex rounded-box p-2 w-full text-left"
           ><img
             loading="lazy"
             width="20"
