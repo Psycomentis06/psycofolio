@@ -1,8 +1,7 @@
 import type { ISocialMedia } from "./socialmedia";
 
 export interface IProfile {
-    firstName?: string;
-    lastName?: string;
+    fullName?: string;
     email?: string;
     phone?: string;
     birthDate?: Date;

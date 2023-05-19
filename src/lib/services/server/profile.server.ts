@@ -6,8 +6,7 @@ import { language } from '../../../app-config.json'
 const profileDir = APP_DATA_DIR + '/profile'
 
 const defaultProfile: IProfile = {
-    firstName: 'first name',
-    lastName: 'last name',
+    fullName: 'Full Name',
     email: 'email@domain.com',
     phone: '+00 000 000 000',
     address: 'Address',

@@ -5,9 +5,11 @@
   import CloseIcon from '$lib/components/icons/Close.svelte'
   import { fade } from "svelte/transition";
   import type { Writable } from "svelte/store";
+  import type { IProfile } from "$lib/models/profile";
+  import { getActiveLanguage } from "$lib/services/language";
 
-    export let username = "Psycofolio";
-    let usernameInput = username;
+    export let profileStore: Writable<IProfile>;
+    let usernameInput = $profileStore.fullName;
     const isLogged = getContext<Writable<boolean>>("logged");
     
     let editMode = false
@@ -17,24 +19,30 @@
         alert("Empty username")
         return
       }
-      username = usernameInput
+      profileStore.update(p => {
+        p.fullName = usernameInput
+        return p
+      })
       editMode = false
-
-      fetch('/api/profile?lang=' + 'en', {
+      const activeLang = getActiveLanguage()
+      fetch('/api/profile?lang=' + activeLang, {
         method: 'POST',
-        body: JSON.stringify({data: {username}}),
+        body: JSON.stringify({data: $profileStore}),
       }).then(res => res.json())
+      .then(data => {
+        usernameInput = data.fullName
+      })
     }
   </script>
 
   {#if !$isLogged}
-    <h1 class="text-white text-5xl text-center font-thin font-fuggles">{username}</h1>
+    <h1 class="text-white text-5xl text-center font-thin font-fuggles">{$profileStore.fullName}</h1>
   {:else if !editMode}
     <div class="relative group/edit" in:fade>
         <button on:click={() => editMode = true} class="btn btn-circle btn-sm btn-info absolute top-0 -right-10 opacity-0 group-hover/edit:opacity-100">
             <PencilIcon width="14px" height="14px" />
         </button>
-        <h1 class="text-white text-5xl text-center font-thin font-fuggles">{username}</h1>
+        <h1 class="text-white text-5xl text-center font-thin font-fuggles">{$profileStore.fullName}</h1>
     </div>
     {:else}
     <div class="relative" in:fade>

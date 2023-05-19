@@ -4,7 +4,7 @@
   import { onMount, setContext } from "svelte";
   import { initTheme } from "$lib/services/theme";
   import { setLanguage, getActiveLanguage, isAvailableLanguage } from '$lib/services/language'
-  import { get, writable} from "svelte/store";
+  import { writable} from "svelte/store";
   import { page } from '$app/stores'
   import { goto } from '$app/navigation'
   import type { LayoutData } from "./$types";
@@ -20,9 +20,11 @@
 
   const languageStore = writable();
   setContext("language", languageStore);
+
+  const profileStore = writable({});
+  setContext("profile", profileStore);
   
-  onMount(() => {
-    
+  onMount( () => {
     // Set theme
     const theme = initTheme();
     themeStore.set(theme);
@@ -41,10 +43,28 @@
         goto(`/${getActiveLanguage()}/${pathname}`, { replaceState: true });
       }
     }
-    languageStore.set(getActiveLanguage());
+    const activeLang = getActiveLanguage();
+    languageStore.set(activeLang);
+    document.addEventListener('languagechange', (e) => {
+      const { detail } = e as CustomEvent
+      getProfileData(detail.lang)
+    })
+    getProfileData(data.lang || activeLang)
   });
 
-</script>
+async function getProfileData(lang: string) {
+    lang = lang || getActiveLanguage()
+    const profileFetch = await fetch('/api/profile?lang=' + lang, {method: 'GET'})
+    const profileData = await profileFetch.json()
+    if (profileData.error) {
+      alert(profileData.error)
+      return
+    } else if (profileData.profile) {
+      profileStore.set(profileData.profile)
+    }
+  }
+
+  </script>
 <div class="app">
 
   <Header />

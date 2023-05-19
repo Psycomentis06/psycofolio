@@ -27,7 +27,11 @@ export async function POST({url, request}) {
     if (data === undefined) {
         return json({ error: 'data is missing' })
     }
-    setProfile(data, lang)
+    const profile = getProfile(lang)
+    Object.entries(data).forEach(([key, value]) => {
+        profile[key] = value
+    })
+    setProfile(profile, lang)
 
     return json({ message: 'success'})
 }
