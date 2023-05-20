@@ -8,6 +8,9 @@
   import { page } from '$app/stores'
   import { goto } from '$app/navigation'
   import type { LayoutData } from "./$types";
+  import { language as configLanguage } from '../app-config.json'
+  import type { IConfigLanguage, IConfigLanguageAvailableProperties, IConfigLanguageFontProperties } from "$lib/interfaces/IAppConfig";
+  import { loadFontFamily, updateClassFontFamily } from "$lib/services/fonts";
 
   export let data: LayoutData;
   const themeStore = writable();
@@ -43,14 +46,38 @@
         goto(`/${getActiveLanguage()}/${pathname}`, { replaceState: true });
       }
     }
+    // Get Profile data
     const activeLang = getActiveLanguage();
     languageStore.set(activeLang);
     document.addEventListener('languagechange', (e) => {
       const { detail } = e as CustomEvent
       getProfileData(detail.lang)
+      setupFont(detail.lang)
     })
     getProfileData(data.lang || activeLang)
+  
+
+    // Load and set fonts
+    setupFont(activeLang)
   });
+
+function setupFont(lang: string) {
+    lang = lang || getActiveLanguage()
+    const configLangData = configLanguage.available.find(l => l.code === lang) as IConfigLanguageAvailableProperties | undefined
+    if (!configLangData) return
+    let fontsSet = new Set<string>()
+    Object.values(configLangData.fonts).forEach(f => {
+      fontsSet.add(f.fontFamily)
+    })
+
+    fontsSet.forEach(f => {
+      loadFontFamily(f)
+    })
+
+    for (const [key, val] of Object.entries(configLangData.fonts)) {
+      updateClassFontFamily( '.' + key + '-font', val.fontFamily)
+    }
+}
 
 async function getProfileData(lang: string) {
     lang = lang || getActiveLanguage()

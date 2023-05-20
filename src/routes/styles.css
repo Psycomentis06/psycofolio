@@ -4,3 +4,37 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+/* 
+    These classes are declarations for fonts to be used across the app.
+    but the real fonts are updated in real-tine using Js and Css Model Object.
+    according to the selected language and corresponding fonts declared in the
+    app-config.json file.
+
+*/
+
+/* Default app's font */
+.global-font {
+    font-family: 'sans-serif';
+}
+
+/* Font used for titles or big text */
+.title-font {
+    font-family: 'sans-serif';
+}
+
+/* Font used for subtitles or medium text */
+.subtitle-font {
+    font-family: 'sans-serif';
+}
+
+/* Font used for paragraphs and long content text */
+.text-font {
+    font-family: 'sans-serif';
+}
+
+/* Beautiful font used for displaying a name or something special  */
+.special-font {
+    font-family: 'sans-serif';
+}

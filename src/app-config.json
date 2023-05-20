@@ -35,19 +35,70 @@
                 "code": "en",
                 "name": "English",
                 "flag": "https://flagicons.lipis.dev/flags/4x3/gb.svg",
-                "rtl": false
+                "rtl": false,
+                "fonts": {
+                    "global": {
+                        "fontFamily": "sans-serif"
+                    },
+                    "title": {
+                        "fontFamily": "Fira Sans"
+                    },
+                    "subtitle": {
+                        "fontFamily": "sans-serif"
+                    },
+                    "text": {
+                        "fontFamily": "sans-serif"
+                    },
+                    "special": {
+                        "fontFamily": "Fuggles"
+                    }
+                }
             },
             {
                 "code": "fr",
                 "name": "Français",
                 "flag": "https://flagicons.lipis.dev/flags/4x3/fr.svg",
-                "rtl": false
+                "rtl": false,
+                "fonts": {
+                    "global": {
+                        "fontFamily": "sans-serif"
+                    },
+                    "title": {
+                        "fontFamily": "sans-serif"
+                    },
+                    "subtitle": {
+                        "fontFamily": "sans-serif"
+                    },
+                    "text": {
+                        "fontFamily": "sans-serif"
+                    },
+                    "special": {
+                        "fontFamily": "Fuggles"
+                    }
+                }
             },
             {
                 "code": "ar",
                 "name": "العربية",
                 "flag": "https://flagicons.lipis.dev/flags/4x3/tn.svg",
-                "rtl": true
+                "rtl": true,
+                "fonts": {
+                    "global": {
+                        "fontFamily": "sans-serif"
+                    },
+                    "title": {
+                        "fontFamily": "sans-serif"
+                    },
+                    "subtitle": {
+                        "fontFamily": "sans-serif"
+                    },
+                    "text": {
+                        "fontFamily": "sans-serif"
+                    },
+                    "special": {
+                        "fontFamily": "Gulzar"
+                    }
+                }
             }
         ]
     }

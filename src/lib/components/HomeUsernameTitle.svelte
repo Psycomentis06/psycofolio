@@ -36,7 +36,7 @@
   </script>
 
   {#if !$isLogged}
-    <h1 class="text-white text-5xl text-center font-thin font-fuggles">{$profileStore.fullName}</h1>
+    <h1 class="text-white text-5xl text-center font-thin special-font">{$profileStore.fullName}</h1>
   {:else if !editMode}
     <div class="relative group/edit" in:fade>
         <button on:click={() => editMode = true} class="btn btn-circle btn-sm btn-info absolute top-0 -right-10 opacity-0 group-hover/edit:opacity-100">
