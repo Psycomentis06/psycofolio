@@ -1,18 +1,21 @@
-<script>
+<script lang="ts">
   import ThemeSelectButton from "./ThemeSelectButton.svelte";
   import LanguageSelectButton from "./LanguageSelectButton.svelte";
   import AdminNavDropdown from "./AdminNavDropdown.svelte";
   import Login from "../components/Login.svelte";
   import { getContext } from "svelte";
+  import type { Writable } from 'svelte/store'
+  import type { IUITranslation } from '$lib/interfaces/IUITranslation';
 
-  const isLogged = getContext("logged");
+  const isLogged = getContext<Writable<boolean>>("logged");
+  const translationStore = getContext<Writable<IUITranslation>>("translation");
 </script>
 
 <nav class="navbar bg-base-100">
   <div class="navbar-start" />
   <div class="navbar-center">
     <div class="dropdown">
-      <button class="btn capitalize btn-wide text-lg"> Profile </button>
+      <button class="btn capitalize btn-wide text-lg"> {$translationStore['navbar.specialty.title']} </button>
       <ul
         class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-56"
       >

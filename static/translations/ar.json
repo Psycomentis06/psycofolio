@@ -5,5 +5,11 @@
     "navbar.login.form.input.password.label": "كلمة المرور",
     "navbar.login.form.input.password.placeholder": "كلمة المرور",
     "navbar.login.form.button.submit": "تسجيل الدخول",
-    "navbar.profile.title": "الملف الشخصي"
+    "navbar.specialty.title": "الأختصاص",
+    "page.cv.tabs.education": "التعليم",
+    "page.cv.tabs.experience": "الخبرة",
+    "page.cv.tabs.skills": "المهارات",
+    "page.cv.tabs.languages": "اللغات",
+    "page.cv.tabs.hobbies": "الهوايات",
+    "page.cv.tabs.projects": "المشاريع"
 }

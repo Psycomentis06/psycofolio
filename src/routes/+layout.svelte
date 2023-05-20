@@ -53,13 +53,24 @@
       const { detail } = e as CustomEvent
       getProfileData(detail.lang)
       setupFont(detail.lang)
+      setDirection()
     })
     getProfileData(data.lang || activeLang)
   
 
     // Load and set fonts
     setupFont(activeLang)
+
+    // Set page direction
+    setDirection()
   });
+
+  function setDirection() {
+    const configLangData = configLanguage.available.find(l => l.code === getActiveLanguage()) as IConfigLanguageAvailableProperties | undefined
+    if (configLangData) {
+      document.body.dir = configLangData.rtl  ? 'rtl' : 'ltr'
+    }
+  }
 
 function setupFont(lang: string) {
     lang = lang || getActiveLanguage()

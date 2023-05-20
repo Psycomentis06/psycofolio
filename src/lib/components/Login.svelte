@@ -5,6 +5,7 @@
   import EyeIcon from "./icons/Eye.svelte";
   import LoginIcon from "./icons/Login.svelte";
   import type { Writable } from "svelte/store";
+  import type { IUITranslation } from "$lib/interfaces/IUITranslation";
 
   let passwordVisible = false;
   let username = "";
@@ -15,10 +16,7 @@
     passwordVisible = !passwordVisible;
   }
 
-  const translationStore = getContext<any>("translation");
-  /*translationStore.subscribe((value) => {
-        console.log(value);
-    })*/
+  const translationStore = getContext<Writable<IUITranslation>>("translation");
   
   const loggedIn = getContext<Writable<boolean>>("logged");
 
@@ -99,7 +97,7 @@
         />
         <button
           on:click={() => togglePasswordVisibility()}
-          class="swap absolute top-12 right-2"
+          class="swap absolute top-12 lrt:right-2 rtl:left-2"
         >
           <div class={passwordVisible ? "swap-off" : "swap-on"}>
             <EyeIcon />

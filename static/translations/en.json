@@ -5,5 +5,11 @@
     "navbar.login.form.input.password.label": "Password",
     "navbar.login.form.input.password.placeholder": "Password",
     "navbar.login.form.button.submit": "Login",
-    "navbar.profile.title": "Profile"
+    "navbar.specialty.title": "Specialty",
+    "page.cv.tabs.education": "Education",
+    "page.cv.tabs.experience": "Experience",
+    "page.cv.tabs.skills": "Skills",
+    "page.cv.tabs.languages": "Languages",
+    "page.cv.tabs.hobbies": "Hobbies",
+    "page.cv.tabs.projects": "Projects"
 }

@@ -35,7 +35,7 @@
       })
     }
 </script>
-<div title="Change Language" class="dropdown dropdown-end">
+<div title="Change Language" class="dropdown ltr:dropdown-end rtl:dropdown-right">
   <button class="btn btn-ghost btn-circle">
     <LanguageIcon />
   </button>
