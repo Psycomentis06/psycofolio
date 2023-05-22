@@ -3,6 +3,12 @@ import { themes } from '../../app-config.json'
 export function setTheme(name:string) {
   document.documentElement.setAttribute('data-theme', name);
   localStorage.setItem('theme', name);
+    const ev = new CustomEvent('themechange', {
+      detail: {
+        theme: name
+      }
+    });
+    window.dispatchEvent(ev);
 }
 
 export function getTheme() {

@@ -1,12 +1,13 @@
 <script lang="ts">
   import { getContext } from "svelte";
   import { setTheme } from "../services/theme";
+  import type { Writable } from "svelte/store";
   export let themeName = "light";
   export let themeDisplay = "Light";
   export let selected = false;
   export let className = "";
 
-  const themeStore = getContext("theme");
+  const themeStore = getContext<Writable<string>>("theme");
 </script>
 
 <button

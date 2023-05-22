@@ -20,8 +20,6 @@
     </div>
     <div class="divider"></div>
     <div class="social-media font-sans flex justify-around items-center flex-wrap" style="gap: 10px;">
-        <SocialMediaLink socialMediaName={SocialMediaNames.REDDIT} username="user" />
-        <SocialMediaLink socialMediaName={SocialMediaNames.DISCORD} username="user" />
-        <SocialMediaLink socialMediaName={SocialMediaNames.STACKOVERFLOW} username="user" />
+        <SocialMediaLink socialMediaName={SocialMediaNames.SNAPCHAT} username="user" />
     </div>
 </div>
