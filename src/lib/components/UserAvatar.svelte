@@ -6,8 +6,9 @@
   import CloudArrowUpIcon from '$lib/components/icons/CloudArrowUp.svelte'
   import ArrowLeftIcon from "$lib/components/icons/ArrowLeft.svelte";
   import { slide, fade } from "svelte/transition";
-  import type { H } from "vitest/dist/types-71ccd11d";
   import RoutedModal from "./RoutedModal.svelte";
+  import Uploads from "../../routes/[lang]/admin/uploads/Uploads.svelte";
+  import {page} from '$app/stores'
   export let className:string = "";
   export let width = 100;
   export let height = 100;
@@ -90,8 +91,11 @@
                   </div>
                   {:else if uploadModalActiveState == uploadModalActiveStateType.UPLOADS}
                     <div in:slide>
-                      <RoutedModal link="/admin/uploads">
+                      <RoutedModal link={$page.params.lang + '/admin/uploads'}>
                         <span slot="button-slot" class="btn btn-block">Pick from old uploads</span>
+                        <svelte:fragment slot="component">
+                          <Uploads />
+                        </svelte:fragment>
                       </RoutedModal>
                       <div class="divider">OR</div>
                       <div class="tooltip block" data-tip="Coming Soon">
