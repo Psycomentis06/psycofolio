@@ -1,5 +1,4 @@
 <script lang="ts">
-  import ProfilePic from "$lib/assets/images/avatar.png";
   import HomeUsernameTitle from "$lib/components/HomeUsernameTitle.svelte";
   import { getContext, onMount } from "svelte";
   import SocialMediaListContainer from '$lib/components/SocialMediaListContainer.svelte';
@@ -7,6 +6,7 @@
   import type { IProfile } from "$lib/models/profile";
   import type { PageData } from "./$types";
   import ChevronRightIcon from "$lib/components/icons/ChevronRight.svelte";
+  import UserAvatar from "$lib/components/UserAvatar.svelte";
 
   export let data: PageData;
 
@@ -32,9 +32,7 @@
 
 <div class="w-full h-[250px] bg-black relative flex items-center justify-center">
     <HomeUsernameTitle {profileStore} />
-    <div>
-      <img class="w-36 h-36 rounded-full absolute -bottom-14 left-1/2 transform -translate-x-1/2" src={ProfilePic} alt="">
-    </div>
+    <UserAvatar width={150} height={150} className="rounded-full absolute -bottom-14 left-1/2 transform -translate-x-1/2" />
 </div>
  <div class="mt-20 mb-3">
   <SocialMediaListContainer {profileStore} />
