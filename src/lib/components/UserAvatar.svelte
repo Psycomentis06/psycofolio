@@ -7,6 +7,7 @@
   import ArrowLeftIcon from "$lib/components/icons/ArrowLeft.svelte";
   import { slide, fade } from "svelte/transition";
   import type { H } from "vitest/dist/types-71ccd11d";
+  import RoutedModal from "./RoutedModal.svelte";
   export let className:string = "";
   export let width = 100;
   export let height = 100;
@@ -89,7 +90,9 @@
                   </div>
                   {:else if uploadModalActiveState == uploadModalActiveStateType.UPLOADS}
                     <div in:slide>
-                      <button class="btn btn-block">Pick from old uploads</button>
+                      <RoutedModal link="/admin/uploads">
+                        <span slot="button-slot" class="btn btn-block">Pick from old uploads</span>
+                      </RoutedModal>
                       <div class="divider">OR</div>
                       <div class="tooltip block" data-tip="Coming Soon">
                           <label for="user-avatar-update" class="btn btn-primary btn-block">Upload</label>
