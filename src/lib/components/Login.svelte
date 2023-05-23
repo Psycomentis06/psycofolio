@@ -97,7 +97,7 @@
         />
         <button
           on:click={() => togglePasswordVisibility()}
-          class="swap absolute top-12 lrt:right-2 rtl:left-2"
+          class="swap absolute top-12 ltr:right-2 rtl:left-2"
         >
           <div class={passwordVisible ? "swap-off" : "swap-on"}>
             <EyeIcon />
