@@ -18,22 +18,24 @@ export function GET({url}) {
 /**
  * @api {post} /api/profile/uploads/server Post profile uploads
 */
-export function POST({request}) {
+export async function POST({request}) {
     const response: IGenericResponse = {
         type: 'error',
         message: 'Invalid image'
     }
-    request.formData().then((data) => {
-        const img = data.get('image');
-        if (!(img instanceof File)) {
-            return json(response);
-        }
-        uploadFile(img).then((u) => {
-            response.type = 'success';
-            response.message = 'Image uploaded';
-            response.data = u;
-            return json(response);
-        });
-    });
+    const data = await request.formData()
+    const img = data.get('image');
+    if (!(img instanceof File)) {
+        return json(response);
+    }
+    const u = await uploadFile(img)
+
+    if (u) {
+        response.type = 'success';
+        response.message = 'Image uploaded';
+        response.data = u;
+        return json(response);
+    }
+
     return json(response);
 }

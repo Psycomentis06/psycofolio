@@ -9,6 +9,7 @@
   import RoutedModal from "./RoutedModal.svelte";
   import Uploads from "../../routes/[lang]/admin/uploads/Uploads.svelte";
   import {page} from '$app/stores'
+  import UploadImage from "./UploadImage.svelte";
   export let className:string = "";
   export let width = 100;
   export let height = 100;
@@ -21,17 +22,6 @@
   let uploadModalActiveState = uploadModalActiveStateType.NONE;
   $: uploadModalActiveStateBackArrow = uploadModalActiveState == uploadModalActiveStateType.NONE ? false : true;
   
-
-  function uploadImage(e: Event) {
-    const { files } = e.target as HTMLInputElement
-    if (!files) return
-    const fd = new FormData()
-    fd.append('image', files[0])
-    fetch('/api/profile/uploads', {
-      method: 'POST',
-      body: fd
-    })
-  }
 
   function saveUrl() {
     console.log('updating image');
@@ -98,10 +88,7 @@
                         </svelte:fragment>
                       </RoutedModal>
                       <div class="divider">OR</div>
-                      <div class="tooltip block" data-tip="Coming Soon">
-                          <label for="user-avatar-update" class="btn btn-primary btn-block">Upload</label>
-                          <input on:input={(e) => uploadImage(e)} type="file" id="user-avatar-update" class="hidden" />
-                      </div>
+                      <UploadImage />
                     </div>
                   {:else if uploadModalActiveState == uploadModalActiveStateType.REMOTE}
                     <div in:slide>
