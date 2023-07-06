@@ -8,6 +8,7 @@ export interface IProfile {
     address?: string;
     city?: string;
     socialMedias?: ISocialMedia[];
+    profilePic?: string
 }
 
 export class Profile {
